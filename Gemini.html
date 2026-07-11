@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archive Storage</title>
+
+<style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
+    body { background:#f4f6fa; }
+    header { background:#0066cc; color:white; padding:18px; text-align:center; }
+    .search { padding:20px; text-align:center; }
+    .search input { width:70%; max-width:600px; padding:12px; border-radius:25px; border:1px solid #ccc; font-size:16px; }
+    .categories { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:15px; padding:20px; }
+    .card { background:white; padding:20px; border-radius:12px; box-shadow:0 3px 10px rgba(0,0,0,.1); text-align:center; cursor:pointer; transition:.3s; }
+    .card:hover { transform:translateY(-5px); }
+    .section { padding:20px; }
+    .files { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+    .file { background:white; padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,.1); }
+    .file button { margin-top:10px; padding:10px 15px; border:none; background:#0066cc; color:white; border-radius:5px; cursor:pointer; }
+    
+    /* Buttons */
+    .fab { position:fixed; bottom:25px; padding:18px; border-radius:50%; cursor:pointer; box-shadow:0 5px 12px rgba(0,0,0,.3); border:none; font-size:20px; }
+    .upload { right:25px; background:#0066cc; color:white; }
+    .chat-btn { right:95px; background:#4285f4; color:white; }
+
+    /* Chat Window */
+    #chat-box { position:fixed; bottom:90px; right:25px; width:300px; height:400px; background:white; border-radius:10px; display:none; box-shadow:0 5px 15px rgba(0,0,0,.2); overflow:hidden; flex-direction:column; }
+    .chat-header { background:#4285f4; color:white; padding:10px; text-align:center; }
+    .chat-content { flex:1; padding:10px; overflow-y:auto; font-size:14px; color:#555; }
+    
+    footer { background:#222; color:white; text-align:center; padding:20px; margin-top:30px; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>📚 Archive Storage</h1>
+</header>
+
+<div class="search"><input type="text" id="search" placeholder="Search archives..." onkeyup="searchFiles()"></div>
+
+<div class="categories">
+    <div class="card">📖 Books</div><div class="card">🎬 Movies</div>
+    <div class="card">🎵 Music</div><div class="card">📰 Newspapers</div>
+</div>
+
+<!-- Chat Interface -->
+<div id="chat-box">
+    <div class="chat-header">Gemini Assistant</div>
+    <div class="chat-content">Hello! How can I help you find archives today?</div>
+</div>
+
+<button class="fab chat-btn" onclick="toggleChat()">💬</button>
+<button class="fab upload" onclick="upload()">+</button>
+
+<footer>© 2026 Archive Storage</footer>
+
+<script>
+    function searchFiles() {
+        let input = document.getElementById("search").value.toLowerCase();
+        document.querySelectorAll(".file").forEach(file => {
+            file.style.display = file.innerText.toLowerCase().includes(input) ? "block" : "none";
+        });
+    }
+
+    function upload() { alert("Upload feature coming soon."); }
+    
+    function toggleChat() {
+        let box = document.getElementById("chat-box");
+        box.style.display = box.style.display === "flex" ? "none" : "flex";
+    }
+
+    /* Auto Scroll Logic */
+    let autoScrollActive = true;
+    let resumeTimer;
+    function startAutoScroll() {
+        if (!autoScrollActive) return;
+        window.scrollBy(0, 0.5);
+        if ((window.innerHeight + window.pageYOffset) >= document.body.scrollHeight - 2) {
+            setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 1500);
+        }
+        requestAnimationFrame(startAutoScroll);
+    }
+
+    window.addEventListener("wheel", () => { autoScrollActive = false; clearTimeout(resumeTimer); });
+    window.addEventListener("scroll", () => {
+        clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(() => { autoScrollActive = true; startAutoScroll(); }, 5000);
+    });
+
+    startAutoScroll();
+</script>
+
+</body>
+</html>
