@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archive Storage</title>
+
+<style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
+    body { background:#f4f6fa; }
+    header { background:#0066cc; color:white; padding:18px; text-align:center; }
+    .search { padding:20px; text-align:center; }
+    .search input { width:70%; max-width:600px; padding:12px; border-radius:25px; border:1px solid #ccc; font-size:16px; }
+    .categories { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:15px; padding:20px; }
+    .card { background:white; padding:20px; border-radius:12px; box-shadow:0 3px 10px rgba(0,0,0,.1); text-align:center; cursor:pointer; transition:.3s; }
+    .card:hover { transform:translateY(-5px); }
+    .section { padding:20px; }
+    .files { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+    .file { background:white; padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,.1); }
+    .file button { margin-top:10px; padding:10px 15px; border:none; background:#0066cc; color:white; border-radius:5px; cursor:pointer; }
+    .upload { position:fixed; bottom:25px; right:25px; background:#0066cc; color:white; border:none; padding:18px; font-size:20px; border-radius:50%; cursor:pointer; box-shadow:0 5px 12px rgba(0,0,0,.3); }
+    footer { background:#222; color:white; text-align:center; padding:20px; margin-top:30px; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>📚 Archive Storage</h1>
+    <p>Store • Browse • Preserve Digital Content</p>
+</header>
+
+<div class="search">
+    <input type="text" id="search" placeholder="Search archives..." onkeyup="searchFiles()">
+</div>
+
+<div class="categories">
+    <div class="card">📖 Books</div>
+    <div class="card">🎬 Movies</div>
+    <div class="card">🎵 Music</div>
+    <div class="card">📰 Newspapers</div>
+    <div class="card">📷 Images</div>
+    <div class="card">🎮 Games</div>
+    <div class="card">💾 Software</div>
+    <div class="card">📑 Documents</div>
+</div>
+
+<div class="section">
+    <h2>⭐ Featured Archives</h2>
+    <br>
+    <div class="files" id="files">
+        <div class="file"><h3>Classic Literature</h3><p>2,350 Books</p><button>Browse</button></div>
+        <div class="file"><h3>Historical Newspapers</h3><p>450,000 Pages</p><button>Browse</button></div>
+        <div class="file"><h3>Vintage Software</h3><p>18,000 Programs</p><button>Browse</button></div>
+        <div class="file"><h3>Public Domain Movies</h3><p>2,100 Videos</p><button>Browse</button></div>
+        <div class="file"><h3>Audio Collection</h3><p>92,000 Tracks</p><button>Browse</button></div>
+        <div class="file"><h3>Historical Images</h3><p>310,000 Photos</p><button>Browse</button></div>
+    </div>
+</div>
+
+<button class="upload" onclick="upload()">+</button>
+
+<footer>© 2026 Archive Storage</footer>
+
+<script>
+    function searchFiles() {
+        let input = document.getElementById("search").value.toLowerCase();
+        let files = document.querySelectorAll(".file");
+        files.forEach(file => {
+            let text = file.innerText.toLowerCase();
+            file.style.display = text.includes(input) ? "block" : "none";
+        });
+    }
+
+    function upload() { alert("Upload feature coming soon."); }
+
+    /* ===== AUTO SCROLL LOGIC ===== */
+    let autoScrollActive = true;
+    let speed = 0.5; // Adjust speed here
+    let resumeTimer;
+
+    function startAutoScroll() {
+        if (!autoScrollActive) return;
+
+        window.scrollBy(0, speed);
+
+        // Check if reached bottom
+        if ((window.innerHeight + window.pageYOffset) >= document.body.scrollHeight - 2) {
+            setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }, 1500);
+        }
+        requestAnimationFrame(startAutoScroll);
+    }
+
+    // Pause on user interaction
+    function pauseScroll() {
+        autoScrollActive = false;
+        clearTimeout(resumeTimer);
+    }
+
+    // Resume after 5 seconds of inactivity
+    function resumeScroll() {
+        clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(() => {
+            autoScrollActive = true;
+            startAutoScroll();
+        }, 5000);
+    }
+
+    window.addEventListener("wheel", pauseScroll);
+    window.addEventListener("touchstart", pauseScroll);
+    window.addEventListener("scroll", resumeScroll);
+    window.addEventListener("touchend", resumeScroll);
+
+    // Initialize
+    startAutoScroll();
+</script>
+
+</body>
+</html>
