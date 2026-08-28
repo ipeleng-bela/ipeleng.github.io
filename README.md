@@ -51,8 +51,8 @@ my bitcoin wallet address for supporting my work on internet archive app on Goog
 
 bitcoin address : 1FRhERRya3k7qsTJYSMBgRUNXgXZ4vv194
 
-PayPal address : peci.luxury@gmail.com and mjbela2@gmail.com 
-info@archive.org
+PayPal address : peci.luxury@gmail.com and mjbela2@gmail.com  or
+donations@archive.org
 
 
 
