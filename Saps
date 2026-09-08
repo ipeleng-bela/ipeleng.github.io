@@ -1,0 +1,29 @@
+​Privacy Policy for [SAPS AI]
+​Last Updated: [08/09/2026]
+​[Your Company/Developer Name] ("we," "our," or "us") operates the [SAPS AI] mobile application (the "App"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our App, which provides a gesture-based panic feature (shaking the device) to initiate calls to emergency services, including the South African Police Service (SAPS 10111).  
+​Please read this Privacy Policy carefully. If you do not agree with the terms of this Privacy Policy, please do not access or use the App.
+​1. Information We Collect
+​To function as a reliable emergency response tool, the App requires access to specific hardware features and user data on your device:
+​A. Motion & Sensor Data (Shake Detection)
+​Accelerometer & Motion Sensors: The App continuously reads raw accelerometer and sensor data to detect a physical "shake" gesture.
+​Note: Motion data is processed locally on your device in real time solely to trigger the emergency event and is not stored or transmitted to external servers.
+​B. Location Data
+​Precise & Background Location: In an emergency triggered by a shake event, the App accesses your device’s GPS location (including precise background location if enabled) to display or send your real-time coordinates to emergency responders or designated emergency contacts.
+​C. Telephony & Call Permissions
+​Phone Call Access (CALL_PHONE / ACTION_CALL): When the shake gesture is activated, the App accesses your phone’s dialer to automatically initiate or facilitate a call to 10111 (or your designated emergency contact).
+​D. Personal & Device Information
+​Device Identifiers: Device model, operating system version, unique device ID, and network carrier status to ensure app stability during emergency events.
+​Account/Contact Info (If Applicable): Name, phone number, and emergency contact details if you choose to set up a profile within the App.
+​2. How We Use Your Information
+​We use the collected data strictly for emergency assistance and app stability:
+​Triggering Emergency Responses: Detecting the shake gesture to immediately launch the dialer for SAPS 10111 or send alert SMS/notifications.
+​Dispatching Location Data: Providing accurate geographic coordinates to law enforcement, medical responders, or chosen emergency contacts when an alert is triggered.
+​Preventing False Positives: Calibrating sensor sensitivity algorithms locally on your device to reduce accidental activations.
+​App Improvement: Analyzing anonymized crash logs and performance metadata to keep the emergency service operational.
+​3. How We Share Your Information
+​We do not sell, rent, or trade your personal information. We only share information under the following circumstances:
+​Emergency Responders & Authorities: When a panic gesture is activated, your location and contact details may be transmitted to SAPS (10111) emergency dispatchers or designated private security/community responders to facilitate emergency assistance.
+​User-Designated Contacts: SMS or push alerts containing your location will be sent to the emergency contacts you manually add to the App.
+​Legal Requirements: If required by law, court order, or South African regulatory frameworks (including POPIA and RICA).
+​4. Permissions Required on Your Device
+​To offer full functionality, the App will explicitly request the following permissions:
